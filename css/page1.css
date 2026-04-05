@@ -1,0 +1,587 @@
+/* ============================================
+   GAMESTORYHUB — NEON INDUSTRIAL THEME
+   Font: Exo 2 (titles) + Space Mono (body)
+============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES
+============================================ */
+:root {
+  --neon: #39ff6a;
+  --neon-dim: rgba(57, 255, 106, 0.15);
+  --neon-glow: rgba(57, 255, 106, 0.4);
+  --red: #ff3a3a;
+  --blue: #3af0ff;
+  --bg: #060608;
+  --bg2: #0c0c10;
+  --bg3: #111118;
+  --surface: #14141e;
+  --surface2: #1c1c28;
+  --border: rgba(57, 255, 106, 0.12);
+  --border2: rgba(57, 255, 106, 0.3);
+  --text: #e8eaf0;
+  --text2: #7a7d90;
+  --text3: #40424f;
+}
+
+/* ============================================
+   RESET
+============================================ */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: pointer;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   SCROLLBAR
+============================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--neon);
+  border-radius: 2px;
+}
+
+/* ============================================
+   NAVBAR
+============================================ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(6, 6, 8, 0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  animation: navDrop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--neon);
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+@keyframes navDrop {
+  from { transform: translateY(-64px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+nav h1 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon-glow), 0 0 40px rgba(57,255,106,0.2);
+  animation: flicker 6s infinite;
+}
+
+nav h1::before { content: '[ '; color: var(--text3); font-weight: 300; }
+nav h1::after  { content: ' ]'; color: var(--text3); font-weight: 300; }
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%            { opacity: 0.6; }
+  97%            { opacity: 1; }
+  98%            { opacity: 0.7; }
+  99%            { opacity: 1; }
+}
+
+#searchBar {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 18px;
+  color: var(--text);
+  width: 280px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchBar::placeholder { color: var(--text3); font-size: 12px; letter-spacing: 1px; }
+
+#searchBar:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 20px var(--neon-dim);
+  width: 340px;
+  background-color: var(--surface2);
+}
+
+/* ============================================
+   HERO
+============================================ */
+.game-hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ============================================
+   GENRE FILTERS
+============================================ */
+#genreFilters {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 48px 20px;
+}
+
+#genreFilters::before {
+  /* content: ''; */
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  margin-right: 8px;
+}
+
+#genreFilters button {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#genreFilters button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--neon);
+  transform: translateX(-101%);
+  transition: transform 0.2s ease;
+  z-index: -1;
+}
+
+#genreFilters button:hover { color: var(--bg); border-color: var(--neon); }
+#genreFilters button:hover::before { transform: translateX(0); }
+
+#genreFilters button.active {
+  background: var(--neon);
+  color: var(--bg);
+  border-color: var(--neon);
+  box-shadow: 0 0 16px var(--neon-glow);
+}
+
+/* ============================================
+   GAMES GRID
+============================================ */
+#gamesGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2px;
+  padding: 2px 48px 60px;
+}
+
+/* ============================================
+   GAME CARD
+============================================ */
+.game-card {
+ 
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cardReveal 0.5s ease both;
+   display: flex;                /* ✅ add this */
+  flex-direction: column;
+}
+.card-info {
+  padding: 16px 18px 20px;
+  background: var(--surface);
+  flex: 1;                      /* ✅ add this — fills remaining space */
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Corner accents */
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border-top: 2px solid var(--neon);
+  border-left: 2px solid var(--neon);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 20px; height: 20px;
+  border-bottom: 2px solid var(--neon);
+  border-right: 2px solid var(--neon);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover {
+  border-color: var(--border2);
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow:
+    0 0 0 1px var(--neon),
+    0 20px 60px rgba(0,0,0,0.8),
+    0 0 40px var(--neon-dim);
+}
+
+.game-card:hover::before,
+.game-card:hover::after { opacity: 1; }
+
+/* Card cover */
+.card-cover {
+  width: 100%;
+  height: 210px;
+  background-size: cover;        /* ✅ make sure this is cover not contain */
+  background-position: center top; /* ✅ change to top so face shows */
+  background-repeat: no-repeat;
+  position: relative;
+  transition: transform 0.4s ease;
+  background-color: var(--bg3);
+}
+
+.game-card:hover .card-cover { transform: scale(1.06); }
+
+/* Scanlines on image */
+.card-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.12) 3px,
+    rgba(0,0,0,0.12) 4px
+  );
+}
+
+/* Gradient fade bottom of image */
+.card-cover::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(to top, var(--surface), transparent);
+  z-index: 1;
+}
+
+/* Card info section */
+.card-info {
+  padding: 16px 18px 20px;
+  background: var(--surface);
+}
+
+.card-info h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.card-info p {
+  font-size: 11px;
+  color: var(--text2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neon);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  background: var(--neon-dim);
+}
+
+/* Read Story button */
+.card-info button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 11px 0;
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--neon);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: crosshair;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-info button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--neon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  z-index: 0;
+}
+
+.card-info button:hover { color: var(--bg); box-shadow: 0 0 20px var(--neon-glow); }
+.card-info button:hover::before { transform: scaleX(1); }
+
+/* ============================================
+   MODAL
+============================================ */
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 6, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 800;
+  backdrop-filter: blur(12px);
+  animation: modalBg 0.3s ease;
+}
+
+#modal.hidden { display: none; }
+
+@keyframes modalBg {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#modalContent {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  padding: 40px;
+  max-width: 700px;
+  width: 92%;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 0 0 1px var(--neon),
+    0 40px 80px rgba(0,0,0,0.9),
+    0 0 60px var(--neon-dim);
+}
+
+#modalContent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--neon);
+  box-shadow: 0 0 16px var(--neon-glow);
+}
+
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+#modalContent img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+#modalContent h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon-glow);
+  margin-bottom: 16px;
+}
+
+#modalContent p {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 2;
+  margin-bottom: 10px;
+}
+
+#modalContent p b { color: var(--neon); font-weight: 700; }
+
+#modalContent h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 24px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+#modalContent hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+#modalContent > button:first-child {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 6px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: crosshair;
+  transition: all 0.2s ease;
+}
+
+#modalContent > button:first-child:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(255,58,58,0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 768px) {
+  nav {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 12px;
+  }
+
+  #searchBar { width: 100%; }
+  #searchBar:focus { width: 100%; }
+  #genreFilters { padding: 20px 20px 14px; }
+
+  #gamesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    padding: 2px 20px 40px;
+  }
+
+  #modalContent { padding: 28px 20px; }
+  #modalContent h2 { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  nav h1 { font-size: 16px; }
+  #gamesGrid { grid-template-columns: 1fr 1fr; }
+}
+.series-games {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.series-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--surface);
+}
+
+.series-card:hover {
+  border-color: var(--neon);
+  background: var(--neon-dim);
+}
+
+.series-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 0;
+  border: none;
+}
+
+.series-card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
