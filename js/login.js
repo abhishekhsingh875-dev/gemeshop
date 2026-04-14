@@ -53,7 +53,7 @@ function handlesignup(){
 
   // Auto login after signup
   localStorage.setItem("loggedInUser", username);
-  window.location.href = "page1.html";
+  window.location.href = "html/page1.html";
 
 
 }
@@ -77,5 +77,5 @@ function handlelogin() {
     }
     // saving the data of user
     localStorage.setItem("loggedinuser",username);
-    window.location.href="page1.html";
+    window.location.href="html/page1.html";
 }

@@ -88,7 +88,7 @@ function renderProfileGrid(ids, gridId) {
     const card = document.createElement("div");
     card.className = "profile-card";
     card.onclick = () =>
-      window.location.href = `page1.html?openGame=${game.id}`;
+      window.location.href = `html/page1.html?openGame=${game.id}`;
     card.innerHTML = `
       <div class="profile-card-cover"
         style="background-image: url('${game.cover}')">

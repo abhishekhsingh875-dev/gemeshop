@@ -50,7 +50,7 @@ function renderGames(list, gridId = "gamesGrid") {
 function openGame(id) {
   // ✅ check login
   if (!isLoggedIn()) {
-    window.location.href = "login.html";
+    window.location.href = "../index.html";
     return;
   }
 
