@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GameStoryHub — Profile</title>
+  <link rel="stylesheet" href="/css/page1.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>🎮 GameStoryHub</h1>
+    <div class="nav-links">
+      <button onclick="window.location.href='page1.html'">← Back</button>
+    </div>
+  </nav>
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+
+    <!-- Profile Picture -->
+    <div class="profile-pic-wrapper">
+      <img id="profilePic" src="image/default-avatar.png" alt="Profile">
+      <label class="pic-upload-btn" for="picInput">Edit</label>
+      <input type="file" id="picInput" accept="image/*" onchange="uploadPic(this)">
+    </div>
+
+    <!-- User Info -->
+    <div class="profile-info">
+      <h2 id="profileUsername">Loading...</h2>
+      <p id="profileJoined">Joined GameStoryHub</p>
+      <div class="profile-stats">
+        <div class="stat-box">
+          <span id="statHistory"></span>
+          <p>Read</p>
+        </div>
+        <div class="stat-box">
+          <span id="statLikes"></span>
+          <p>Liked</p>
+        </div>
+        <div class="stat-box">
+          <span id="statFavs"></span>
+          <p>Favorites</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Profile Tabs -->
+  <div class="profile-tabs">
+    <button class="ptab active" onclick="switchProfileTab('history')">
+      📖 History
+    </button>
+    <button class="ptab" onclick="switchProfileTab('liked')">
+      ♥ Liked
+    </button>
+    <button class="ptab" onclick="switchProfileTab('favorites')">
+      ★ Favorites
+    </button>
+  </div>
+
+  <!-- History Section -->
+  <div id="ptab-history" class="ptab-content">
+    <div class="section-header">
+      <h2>📖 Reading History</h2>
+      <button onclick="clearHistory()">Clear All</button>
+    </div>
+    <div id="profileHistoryGrid" class="profile-grid"></div>
+  </div>
+
+  <!-- Liked Section -->
+  <div id="ptab-liked" class="ptab-content hidden">
+    <div class="section-header">
+      <h2>♥ Liked Games</h2>
+    </div>
+    <div id="profileLikedGrid" class="profile-grid"></div>
+  </div>
+
+  <!-- Favorites Section -->
+  <div id="ptab-favorites" class="ptab-content hidden">
+    <div class="section-header">
+      <h2>★ Favorite Games</h2>
+    </div>
+    <div id="profileFavGrid" class="profile-grid"></div>
+  </div>
+
+  <script src="/js/games.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

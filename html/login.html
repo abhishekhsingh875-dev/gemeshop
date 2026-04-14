@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStoryHub-login</title>
+    <link rel="stylesheet" href="/css/page1.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+
+
+        <div class="login-logo">
+            <h1>🎮 GameStoryHub</h1>
+            <p>Read every game story ever told</p>
+        </div>
+        <div class="login-box">
+            <div class="login-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="loginusername" placeholder="Enter username...">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="loginpassword" placeholder="Enter password...">
+                </div>
+                <p class="error-msg" id="loginerror"></p>
+                <button class="submit-btn" onclick="handlelogin()">Login</button>
+            </div>
+            <!-- Signup Form -->
+            <div id="signupForm" class="hidden">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="signupusername" placeholder="Choose username...">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="signuppassword" placeholder="Choose password...">
+                </div>
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupconfirm" placeholder="Confirm password...">
+                </div>
+                <p class="error-msg" id="signuperror"></p>
+                <button class="submit-btn" onclick="handlesignup()">Create Account</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/login.js   "></script>
+
+</body>
+</html>

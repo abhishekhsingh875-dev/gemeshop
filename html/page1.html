@@ -7,29 +7,84 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <h1>🎮 GameStoryHub</h1>
-    <input type="text" id="searchBar" placeholder="Search games...">
-  </nav>
-
-  <!-- Genre Filter -->
+ <!-- Navigation tabs -->
+<nav>
+  <h1>🎮 GameStoryHub</h1>
+  <div class="nav-links">
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('history')">📖 History</button>
+    <button onclick="showSection('favorites')">★ Favorites</button>
+    <button onclick="showSection('about')">ℹ About</button>
+  </div>
+  <input type="text" id="searchBar" placeholder="Search games...">
+</nav>
+<div id="modal" class="hidden">
+  <div id="modalContent"></div>
+</div>
+<!-- HOME SECTION -->
+<div id="section-home">
   <div id="genreFilters"></div>
-
-  <!-- Games Grid -->
   <div id="gamesGrid"></div>
+</div>
 
-  <!-- Game Detail Modal -->
-   <!-- Paste this in your game detail page as the hero section -->
-  <div class="game-hero">
+<!-- HISTORY SECTION -->
+<div id="section-history" class="hidden">
+  <div class="section-header">
+    <h2>📖 Reading History</h2>
+    <button onclick="clearHistory()">Clear History</button>
+  </div>
+  <div id="historyGrid"></div>
+</div>
+
+<!-- FAVORITES SECTION -->
+<div id="section-favorites" class="hidden">
+  <div class="section-header">
+    <h2>★ My Favorites</h2>
+  </div>
+  <div id="favoritesGrid"></div>
+</div>
+
+<!-- ABOUT SECTION -->
+<div id="section-about" class="hidden">
+  <div class="about-container">
+
+    <div class="about-card">
+      <h2>🎮 About GameStoryHub</h2>
+      <p>GameStoryHub is a free platform where anyone can read the
+      full story of any video game — even if they have never played it.
+      We believe every great game tells a great story worth sharing.</p>
+    </div>
+
+    <div class="about-card">
+      <h2>🧑‍💻 Developed By</h2>
+      <p>Rishi singh,</p>
+      <p>Built with HTML, CSS and JavaScript.</p>
+      <p>Designed and developed as a personal project
+      to bring game stories to everyone.</p>
+    </div>
+
+    <div class="about-card">
+      <h2>💡 What We Offer</h2>
+      <p>Full game stories and lore</p>
+      <p>Character breakdowns</p>
+      <p>Series connections</p>
+      <p>Reading history tracking</p>
+      <p>Like and favorite system</p>
+    </div>
+
+    <div class="about-card">
+      <h2>❤️ Our Mission</h2>
+      <p>Not everyone can afford or play every game.
+      GameStoryHub makes sure no great story goes unread.
+      We are here to make gaming stories accessible to everyone
+      regardless of platform or budget.</p>
+    </div>
+    
 
   </div>
-  <div id="modal" class="hidden">
-    <div id="modalContent"></div>
-  </div>
-
-
-</body>
+</div>
 <script src="/js/games.js"></script>
 <script src="/js/app.js"></script>
+</body>
+
 </html>

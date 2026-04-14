@@ -585,3 +585,163 @@ nav h1::after  { content: ' ]'; color: var(--text3); font-weight: 300; }
   font-size: 12px;
   line-height: 1.6;
 }
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-links button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 6px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.nav-links button:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+}
+
+/* Action buttons on card cover */
+.card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.game-card:hover .card-actions { opacity: 1; }
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover { transform: scale(1.15); }
+
+.like-btn.active { background: #e05555; border-color: #e05555; }
+.fav-btn.active  { background: var(--neon); border-color: var(--neon); color: #000; }
+
+/* Section header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 48px 10px;
+  color: var(--neon);
+  font-family: 'Exo 2', sans-serif;
+  letter-spacing: 2px;
+}
+
+.section-header button {
+  background: transparent;
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 6px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.section-header button:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Empty message */
+.empty-msg {
+  text-align: center;
+  color: var(--text3);
+  font-size: 14px;
+  padding: 60px;
+  letter-spacing: 2px;
+}
+
+/* About cards */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px 48px 60px;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.about-card h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 16px;
+  color: var(--neon);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-card p {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 2;
+}
+
+/* Hidden */
+.hidden { display: none; }
+/* Nav profile container */
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.nav-profile:hover {
+  border-color: var(--neon);
+  background: var(--neon-dim);
+}
+
+
+.nav-profile img {
+  width: 32px;      
+  height: 32px;     
+  border-radius: 50%;
+  object-fit: cover;  
+  border: 2px solid var(--neon);
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+
+.nav-profile span {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--neon);
+  letter-spacing: 1px;
+}
